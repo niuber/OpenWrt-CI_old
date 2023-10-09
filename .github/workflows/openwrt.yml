@@ -38,7 +38,8 @@ jobs:
       - name: Download lede
         run: |
           git clone https://github.com/coolsnowwolf/lede
-          cp .config ./lede/.config
+          # 修改对应机型配置文件 .config 
+          cp newifi-d2.config ./lede/.config
           mv ./lede/* ./
       - name: Install Helloword
         run: |
