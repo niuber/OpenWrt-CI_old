@@ -14,7 +14,8 @@ on:
     branches: 
       - master
   schedule:
-    - cron: 0 0 1 * *
+    # 每周一0点运行
+    - cron: 0 0 * * 0
   watch:
     types: started
 
