@@ -14,8 +14,8 @@ on:
     branches: 
       - main
   schedule:
-     # 每周一0点运行
-    - cron: 0 10 * * *
+     # 每天一点运行
+    - cron: 0 1 * * *
   watch:
     types: started
 
@@ -40,7 +40,7 @@ jobs:
         run: |
           git clone https://github.com/coolsnowwolf/lede
           # 修改对应机型配置文件 .config 
-          cp .config ./lede/.config
+          cp newifi-d2.config ./lede/.config
           mv ./lede/* ./
       - name: Install Helloword
         run: |
