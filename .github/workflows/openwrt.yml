@@ -12,10 +12,10 @@ name: OpenWrt
 on:
   push:
     branches: 
-      - master
+      - main
   schedule:
      # 每周一0点运行
-    - cron: 10 10 * * *
+    - cron: 0 10 * * *
   watch:
     types: started
 
