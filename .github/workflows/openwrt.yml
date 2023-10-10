@@ -13,9 +13,9 @@ on:
   push:
     branches: 
       - master
-  schedule:
+  #schedule:
     # 每周一0点运行
-    - cron: 50 9 * * *
+    #- cron: 50 9 * * *
   watch:
     types: started
 
