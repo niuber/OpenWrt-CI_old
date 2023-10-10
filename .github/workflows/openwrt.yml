@@ -15,7 +15,7 @@ on:
       - master
   schedule:
     # 每周一0点运行
-    - cron: 0 10 * * *
+    - cron: 50 9 * * *
   watch:
     types: started
 
