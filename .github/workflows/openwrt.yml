@@ -13,9 +13,9 @@ on:
   push:
     branches: 
       - main
-  schedule:
+   # schedule:
      # 每天一点运行
-    - cron: 0 1 * * *
+   # - cron: 0 1 * * *
   watch:
     types: started
 
