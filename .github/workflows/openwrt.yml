@@ -17,6 +17,8 @@ on:
       - cron: 0 16 * * *
   watch:
     types: started
+  #手动编译
+  workflow_dispatch:
 
 jobs:
   build:
