@@ -13,8 +13,8 @@ on:
   push:
     branches: 
       - main
-  schedule:
-      - cron: 25 18 * * *
+  #schedule:
+      #- cron: 25 18 * * *
   watch:
     types: started
   #手动编译
