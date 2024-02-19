@@ -65,6 +65,9 @@ jobs:
       - name: Costom configure file
         run: |
           make defconfig
+      - name: Cleanup Toolchain
+        run: |
+          make dirclean
       - name: Download package source code
         run: |
           make download -j8
