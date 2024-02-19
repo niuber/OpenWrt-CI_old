@@ -77,7 +77,7 @@ jobs:
       - name : Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: newifi-d2
+          name: newifi-d2-$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           #path: bin/targets/
           path: bin/
           
