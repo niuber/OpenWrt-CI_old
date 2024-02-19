@@ -78,5 +78,6 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: newifi-d2
-          path: bin/targets/
+          #path: bin/targets/
+          path: bin/
           
