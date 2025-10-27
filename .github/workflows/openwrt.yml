@@ -12,11 +12,13 @@ name: OpenWrt
 on:
   push:
     branches: 
-      - master
-  schedule:
-    - cron: 0 0 1 * *
+      - main
+  #schedule:
+      #- cron: 25 18 * * *
   watch:
     types: started
+  #手动编译
+  workflow_dispatch:
 
 jobs:
   build:
@@ -40,22 +42,22 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede
           cp .config ./lede/.config
           mv ./lede/* ./
-      - name: Install Helloword
-        run: |
-          echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
-      - name: Install OpenClash
-        run: |
-          mkdir package/luci-app-openclash
-          cd package/luci-app-openclash
-          git init
-          git remote add -f origin https://github.com/vernesong/OpenClash.git
-          git config core.sparsecheckout true
-          echo "luci-app-openclash" >> .git/info/sparse-checkout
-          git pull --depth 1 origin master
-          git branch --set-upstream-to=origin/master master
-          pushd luci-app-openclash/tools/po2lmo
-          make && sudo make install
-          popd
+      #- name: Install Helloword
+      #  run: |
+      #    echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default 
+       #- name: Install OpenClash
+       #  run: |
+       #    mkdir package/luci-app-openclash
+       #    cd package/luci-app-openclash
+       #    git init
+       #    git remote add -f origin https://github.com/vernesong/OpenClash.git
+       #    git config core.sparsecheckout true
+       #    echo "luci-app-openclash" >> .git/info/sparse-checkout
+       #    git pull --depth 1 origin master
+       #    git branch --set-upstream-to=origin/master master
+       #    pushd luci-app-openclash/tools/po2lmo
+       #    make && sudo make install
+       #    popd
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
@@ -63,6 +65,9 @@ jobs:
       - name: Costom configure file
         run: |
           make defconfig
+      - name: Cleanup Toolchain
+        run: |
+          make dirclean
       - name: Download package source code
         run: |
           make download -j8
@@ -75,6 +80,7 @@ jobs:
       - name : Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_firmware
-          path: bin/targets/
+          name: newifi-d2
+          #path: bin/targets/
+          path: bin/
           
